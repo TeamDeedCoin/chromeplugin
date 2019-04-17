@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Deedcoin Zillow Plugin</title>
+<link rel="stylesheet" type="text/css" href="main.css" media="screen">
+<script src="jquery.min.js"></script>
+<script src="md5.js"></script>
+<script src="web3.min.js"></script>
+<script src="ethereumjs-tx.js"></script>
+<script src="gibberish-aes.js"></script>
+<script src="elliptic.js"></script>
+</head>
+<body>
+	 <div id="disableoverlay">
+		<div class="pb30 page1header">
+			<img src="https://deedcoin.com/PLUGIN/CHROME/icon.png" class="logoimg">&emsp;
+			<h4 class="centered" style="width: 460px; line-height: 20px;">
+				Zillow media not found on this page.<br>
+				<a href="https://zillow.com" class="zillowlink">Go to Zillow.com</a>
+			</h4>
+		</div>
+
+		<div class="avatar">
+			<div class="logoutbtn"></div>
+			<img class="avatarimg" src="https://deedcoin.com/PLUGIN/CHROME/cog.svg">
+		</div>
+
+		<h2 class="centered pb10 bold">Welcome to Deedcoin!</h2>
+
+		<p class="centered" style="line-height: 30px;">Deedcoin makes it easy to save big on commissions when<br> buying or selling a home. Try our savings calculator and<br> see how much you could save!</p>
+
+
+		<div class="slider1">
+			<label id="rtooltip">$248k</label>
+			<input id="slider1" type="range" min="50" max="1000" step="1" value="248">
+		</div>
+
+
+		<h1 id="biggreen0">$4,960</h1>
+
+		<h3 class="centered pt10">approx. saved on commissions when using a Deed agent.</h3>
+
+		<div class="btn">
+			<button class="bigbtn zillowlink">START SAVING</button>
+		</div>
+
+	</div>
+	
+
+	<div class="ajaxdiv">
+		<h2 class="centered pb10">Please wait</h2>
+		<img src="https://deedcoin.com/PLUGIN/api/ajax5.gif">
+	</div>
+
+	<div class="enterpassword">
+		<h2><b>Deedcoin Zillow Plugin</b></h2>
+		<h3>Enter Wallet Password</h3>
+		<input type="password" class="biginput" style="width: 370px;" value="" id="enterpassword">
+		<br>
+		<button class="submitpwbtn" id="submitpassword">OK</button>
+		<button class="lilbtn" id="cancelpassword">Cancel</button>
+	</div>
+
+	<div id="loginform">
+		<div class="pb30 page1header">
+			<img src="https://deedcoin.com/PLUGIN/CHROME/icon.png" class="logoimg">&emsp;
+			<h2>Login</h2>
+		</div>
+
+		<div class="closelogin">
+			<!-- &times; -->
+			<span style="font-size: 16px;">&ltrif;&ensp;Back</span>
+		</div>
+
+		<h2 class="centered">Sign into your Deedcoin profile below</h2>
+
+		<div class="logform">
+			<br><span id="loginMsg"></span><br><br><br>
+			<label>Email:</label>
+			<input class="biginput" id="email" name="email" type="email">
+			<label>Password:</label>
+			<input class="biginput" id="password" name="password" type="password">
+			<br>
+		</div>
+
+		<div class="btn">
+			<button class="bigbtn" id="loginsubmit">Login</button>
+		</div>
+
+		<div class="subtextlink">
+			<span id="registerbtn">I don't have a profile yet</span>
+		</div>
+	</div>
+
+	<div id="registerform">
+		<div class="pb30 page1header">
+			<img src="https://deedcoin.com/PLUGIN/CHROME/icon.png" class="logoimg">&emsp;
+			<h2>Register</h2>
+		</div>
+
+		<div class="closeregister">
+			<!-- &times; -->
+			<span style="font-size: 16px;">&ltrif;&ensp;Back</span>
+		</div>
+
+		<h2 class="centered">Register</h2>
+
+		<div class="regform">
+			<span id="regMsg"></span><br><br>
+			<label>First Name:</label>
+			<label style="margin-left: 153px;">Last Name:</label><br>
+			<input class="halfinput" id="firstname_r" name="firstname_r" type="text">
+			<input class="halfinput" style="margin-left: 8px;" id="lastname_r" name="lastname_r" type="text">
+			<label>Email:</label><br>
+			<input class="biginput" id="email_r" name="email_r" type="email">
+			<label>Phone:</label><br>
+			<input class="biginput" id="phone_r" name="phone_r" type="tel">
+			<label>Password:</label>
+			<label style="margin-left: 162px;">Repeat Password:</label><br>
+			<input class="halfinput" id="password_r" name="password_r" type="password">
+			<input class="halfinput" style="margin-left: 8px;" id="password2_r" name="password2_r" type="password">
+			<div class="rxmark" style="right: 74px; top: 266px;">
+				<img id="rx_regemail" src="empty.svg">
+			</div>
+			<div class="rxmark" style="left: 265px; top: 425px;">
+				<img id="rx_regpw" src="empty.svg">
+			</div>
+			<div class="rxmark" style="right: 74px; top: 347px;">
+				<img id="rx_phone" src="empty.svg">
+			</div>
+			<br>
+		</div>
+
+		<div class="btn">
+			<button class="bigbtn" id="registersubmit">CREATE PROFILE</button>
+		</div>
+
+		<div class="subtextlink">
+			<span id="gobacktologin">Back to Login</span>
+		</div>
+	</div>
+
+	<div id="profilepage">
+		<div class="page1header">
+			<img src="https://deedcoin.com/PLUGIN/CHROME/icon.png" class="logoimg">&emsp;
+			<h2>My Profile</h2>
+		</div>
+
+		<div class="closeprofile">
+			<span style="font-size: 16px;">&ltrif;&ensp;Back</span>
+		</div>
+
+		<h2 class="centered">Basic Info</h2>
+
+		<div class="profileform">
+			<span id="profileMsg"></span>
+			<span id="profileMsgError"></span><br><br>
+			<label>Deedcoin Balance:</label>
+			<input class="biginput" id="deedbalance" name="deedbalance" type="text" value="" disabled>
+			<br>
+			<label>Address:</label>
+			<input class="biginput" id="ethaddress" name="ethaddress" type="text" value="" disabled>
+			<br>
+			<label>
+				<span class="x0">&ensp;0x</span>
+				New Private Key:
+			</label>
+			<input class="biginput" id="pk" name="pk" type="password" value="" style="padding-left: 30px; width: calc(440px - 17px);">
+			<div class="rxmark" style="right: 75px; top: 310px;">
+				<img id="rx_pk" src="empty.svg">
+			</div>
+			<br>
+			<label>Encryption Password:</label>
+			<label style="margin-left: 83px;">Repeat Password:</label><br>
+			<input class="halfinput" id="pwinput" name="pwinput" type="password" value="">
+			<input class="halfinput" style="margin-left: 8px;" id="pwinput2" name="pwinput2" type="password" value="">
+			<div class="rxmark" style="left: 264px; top: 380px;">
+				<img id="rx_pkpw" src="empty.svg">
+			</div>
+		</div>
+
+		<div class="btn">
+			<button class="bigbtn" id="updateprofile">Update Profile</button>
+		</div>
+	</div>
+
+	<div id="page0">
+		<div class="pb30 page1header">
+			<img src="https://deedcoin.com/PLUGIN/CHROME/icon.png" class="logoimg">&emsp;
+			<h2>Deedcoin</h2>
+		</div>
+
+		<div class="avatar">
+			<div class="logoutbtn"></div>
+			<img class="avatarimg" src="https://deedcoin.com/PLUGIN/CHROME/cog.svg">
+		</div>
+
+		<h3 class="centered pb10">It looks like you may be interested in viewing:</h3>
+		<h1 class="address centered pb20"></h1>
+
+		<div class="savingsbox">
+			<h3 style="margin: 0; padding: 0;">Price: <span id="propertyprice"></span></h3>
+			<h3 class="centered">Using Deedcoin would save you about:</h3>
+			<h1 id="biggreen">$$$</h1>
+		</div>
+
+		<h3 class="centered pt20">Would you like to get connected with one of our agents?</h3>
+
+		<div class="btn">
+			<button class="bigbtn" id="beginbtn">GET CONNECTED</button>
+		</div>
+
+		<div class="subtextlink">
+			<span class="loginbtn">Login</span>
+		</div>
+	</div>
+
+	<div id="page1">
+		<div class="pb30 page1header">
+			<img src="https://deedcoin.com/PLUGIN/CHROME/icon.png" class="logoimg">&emsp;
+			<h2 class="address"></h2>
+		</div>
+
+		<div class="avatar">
+			<div class="logoutbtn"></div>
+			<img class="avatarimg" src="https://deedcoin.com/PLUGIN/CHROME/cog.svg">
+		</div>
+
+		<div class="mainmain pb20">
+			<div class="mainmain1">
+				<h4>Your Agent:</h4>
+				<img id="agent_img" src="https://deedcoin.com/PLUGIN/CHROME/default-avatar.png">
+				<h2 style="margin: 0; margin-top: 10px;">
+					<span class="agent_fname"></span>
+					<span class="agent_lname"></span>
+				</h2>
+				<h3 style="margin: 0; opacity: 0.7;">
+					<span class="agent_city"></span>,
+					<span class="agent_state"></span>
+				</h3>
+			</div>
+			<div class="mainmain2">
+				<h1 class="centered lrarr">&lrarr;</h1>
+			</div>
+			<div class="mainmain3">
+				<h4>Your Profile:</h4>
+				<img id="my_img" src="https://deedcoin.com/PLUGIN/CHROME/default-avatar.png">
+				<h2 style="margin: 0;" class="centered loginbtn">
+					Login
+				</h2>
+				<h2 id="localname"></h2>
+			</div>
+		</div>
+
+		<div id="instructions">
+			<h3>1) Click on <b>LOGIN</b> to sign into your Deedcoin profile.</h3>
+			<h3>2) If you do not have a profile yet, you can create one.</h3>
+			<h3>3) after logging in, click <b>NEXT</b> to get paired with your agent.</h3>
+		</div>
+
+		<div class="btn">
+			<button class="bigbtn" id="next">NEXT</button>
+		</div>
+
+		<div class="subtextlink">
+			<span id="back1">Back</span>
+		</div>
+	</div>
+
+	<div id="page2">
+		<div class="pb30 page1header">
+			<img class="logoimg" src="https://deedcoin.com/PLUGIN/CHROME/icon.png">&emsp;
+			<h2 class="address"></h2>
+		</div>
+
+		<div class="avatar">
+			<div class="logoutbtn"></div>
+			<img class="avatarimg" src="https://deedcoin.com/PLUGIN/CHROME/cog.svg">
+		</div>
+
+		<h1 style="margin: 0;" class="centered pb30">Summary</h1>
+
+		<div class="summaryRow">
+			<div class="summaryImg">
+				<img id="agent_img2" src="https://deedcoin.com/PLUGIN/CHROME/default-avatar.png">
+			</div>
+			<div class="summaryDetails">
+				<h1 class="summaryB1">Broker Details:</h1>
+				<h4 class="summaryB2">
+					<span class="agent_fname"></span>
+					<span class="agent_lname"></span>
+				</h4>
+				<h4 class="summaryB3" id="brokerage"></h4>
+				<h4 class="summaryB4">
+					<span class="agent_city"></span>,
+					<span class="agent_state"></span>
+				</h4>
+			</div>
+		</div>
+
+		<div class="summaryRow">
+			<div class="summaryImg">
+				<img id="my_img2" src="https://deedcoin.com/PLUGIN/CHROME/default-avatar.png">
+			</div>
+			<div class="summaryDetails">
+				<h1 class="summaryC1">My Details:</h1>
+				<h4 class="summaryC2" id="localname2"></h4>
+				<h4 class="summaryC3" id="localemail"></h4>
+				<h4 class="summaryC4" id="localphone"></h4>
+			</div>
+		</div>
+
+		<p style="margin: 0;" class="centered checkbox">
+			<input id="agree" name="agree" type="checkbox">
+			<label id="agreelabel" for="agree">I agree to the <span class="TnC">Terms and Conditions</span></label>
+		</p>
+
+		<div class="btn">
+			<button class="bigbtn" id="request">SCHEDULE</button>
+		</div>
+
+		<div class="subtextlink">
+			<span id="back2">Back</span>
+		</div>
+	</div>
+
+	<div id="page3">
+		<div class="pb30 page1header">
+			<img src="https://deedcoin.com/PLUGIN/CHROME/icon.png" class="logoimg">&emsp;
+			<h2 class="address"></h2>
+		</div>
+
+		<div class="avatar">
+			<div class="logoutbtn"></div>
+			<img class="avatarimg" src="https://deedcoin.com/PLUGIN/CHROME/cog.svg">
+		</div>
+
+		<h1 class="pb50">Success!</h1>
+		<h2>We've sent a message to <b><span class="agent_fname"></span> <span class="agent_lname"></span></b>. You should receive a phone call or email from the agent within the next 24hrs. You can continue browsing Zillow.com for other properties you may be interested in.<br>Thank you for using Deedcoin!</h2>
+		<div class="btn">
+			<button class="bigbtn" id="home">BACK HOME</button>
+		</div>
+	</div>
+
+	<script src="main.js"></script>
+
+</body>
+</html>
