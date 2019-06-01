@@ -1,6 +1,6 @@
 {
 	"name": "Deedcoin Zillow Plugin",
-	"version": "1.5",
+	"version": "1.9",
 	"description": "Find a house with Zillow, use Deedcoin to save on commissions!",
 	"manifest_version": 2,
 	"short_name": "Deedcoin",
@@ -14,7 +14,9 @@
 		"http://www.deedcoin.com/*",
 		"https://www.deedcoin.com/*",
 		"http://rpc.gochain.io/*",
-		"https://rpc.gochain.io/*"
+		"https://rpc.gochain.io/*",
+		"http://mainnet.infura.io/*",
+		"https://mainnet.infura.io/*"
 	],
 	"icons": {
 		"128": "icon.png",

@@ -1,11 +1,21 @@
 
 $(document).ready(function() {
 
-	/*var abi = [{"constant":true,"inputs":[],"name":"name","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"decimals","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_address","type":"address"}],"name":"balanceOf","outputs":[{"name":"balance","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"symbol","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_value","type":"uint256"}],"name":"transfer","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_value","type":"uint256"},{"name":"_data","type":"bytes"}],"name":"transfer","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"payable":false,"stateMutability":"nonpayable","type":"fallback"},{"anonymous":false,"inputs":[{"indexed":true,"name":"previousOwner","type":"address"},{"indexed":true,"name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"},{"indexed":false,"name":"_value","type":"uint256"},{"indexed":false,"name":"_data","type":"bytes"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Transfer","type":"event"}];
-	var web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/b132dd2604d743339549679749cbfedf"));*/
+	/* Ethereum 
+	var abi = [{"constant":true,"inputs":[],"name":"name","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"decimals","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_address","type":"address"}],"name":"balanceOf","outputs":[{"name":"balance","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"symbol","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_value","type":"uint256"}],"name":"transfer","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_value","type":"uint256"},{"name":"_data","type":"bytes"}],"name":"transfer","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"payable":false,"stateMutability":"nonpayable","type":"fallback"},{"anonymous":false,"inputs":[{"indexed":true,"name":"previousOwner","type":"address"},{"indexed":true,"name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"},{"indexed":false,"name":"_value","type":"uint256"},{"indexed":false,"name":"_data","type":"bytes"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Transfer","type":"event"}];
+	var web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/b132dd2604d743339549679749cbfedf"));
+	var adminaddress = "0x48F5C3f4012A46c3F1331b7590EcCaD8fa96f4bC";
+	var deedcontract = "0x7046b8988d591b46c1e4562a1166745f24167a17";
+	/* */
+
 	/* GoChain */
 	var abi = [{"constant": true, "inputs": [], "name": "name", "outputs": [{"name": "", "type": "string"} ], "payable": false, "stateMutability": "view", "type": "function"}, {"constant": true, "inputs": [], "name": "totalSupply", "outputs": [{"name": "", "type": "uint256"} ], "payable": false, "stateMutability": "view", "type": "function"}, {"constant": true, "inputs": [], "name": "decimals", "outputs": [{"name": "", "type": "uint256"} ], "payable": false, "stateMutability": "view", "type": "function"}, {"constant": true, "inputs": [{"name": "_address", "type": "address"} ], "name": "balanceOf", "outputs": [{"name": "balance", "type": "uint256"} ], "payable": false, "stateMutability": "view", "type": "function"}, {"constant": true, "inputs": [], "name": "owner", "outputs": [{"name": "", "type": "address"} ], "payable": false, "stateMutability": "view", "type": "function"}, {"constant": true, "inputs": [], "name": "symbol", "outputs": [{"name": "", "type": "string"} ], "payable": false, "stateMutability": "view", "type": "function"}, {"constant": false, "inputs": [{"name": "_to", "type": "address"}, {"name": "_value", "type": "uint256"} ], "name": "transfer", "outputs": [{"name": "", "type": "bool"} ], "payable": false, "stateMutability": "nonpayable", "type": "function"}, {"constant": false, "inputs": [{"name": "_to", "type": "address"}, {"name": "_value", "type": "uint256"}, {"name": "_data", "type": "bytes"} ], "name": "transfer", "outputs": [{"name": "", "type": "bool"} ], "payable": false, "stateMutability": "nonpayable", "type": "function"}, {"constant": false, "inputs": [{"name": "newOwner", "type": "address"} ], "name": "transferOwnership", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function"}, {"inputs": [], "payable": false, "stateMutability": "nonpayable", "type": "constructor"}, {"payable": false, "stateMutability": "nonpayable", "type": "fallback"}, {"anonymous": false, "inputs": [{"indexed": true, "name": "previousOwner", "type": "address"}, {"indexed": true, "name": "newOwner", "type": "address"} ], "name": "OwnershipTransferred", "type": "event"}, {"anonymous": false, "inputs": [{"indexed": true, "name": "_from", "type": "address"}, {"indexed": true, "name": "_to", "type": "address"}, {"indexed": false, "name": "_value", "type": "uint256"}, {"indexed": false, "name": "_data", "type": "bytes"} ], "name": "Transfer", "type": "event"}, {"anonymous": false, "inputs": [{"indexed": true, "name": "_from", "type": "address"}, {"indexed": true, "name": "_to", "type": "address"}, {"indexed": false, "name": "_value", "type": "uint256"} ], "name": "Transfer", "type": "event"} ];
 	var web3 = new Web3(new Web3.providers.HttpProvider("https://rpc.gochain.io/"));
+	var adminaddress = "0x48F5C3f4012A46c3F1331b7590EcCaD8fa96f4bC";
+	var deedcontract = "0xDEED20dBe09a9306f4beAa32Be70A06Bc12bd241";
+	/*var deedcontract = "0x799884b029D94ce695006d39AdD1935796428bB9";*/
+	/* */
+
 	var getGasPrice = web3.eth.gasPrice;
 	var loggedin = false;
 	var gasIndex = 0.000000001;
@@ -18,17 +28,13 @@ $(document).ready(function() {
 	var ethbalance = 0;
 	var deedbalance = 0;
 	var wei = 1000000000000000000;
-	/*var adminaddress = "0x48F5C3f4012A46c3F1331b7590EcCaD8fa96f4bC";
-	var deedcontract = "0x7046b8988d591b46c1e4562a1166745f24167a17";*/
-	/* GoChain */
-	var adminaddress = "0xec8e5Dc3060A194A15D104c97C7ae82C35Ad19D9";
-	var deedcontract = "0xb64Cb38c26979bc2898e42fd2125FF821e101f33";
 	var abiobject = web3.eth.contract(abi);
 	var Contract = abiobject.at(deedcontract);
 	if(!ethaddress) ethaddress = "";
 	//var DOMAIN = "http://127.0.0.1";
 	var DOMAIN = "https://www.deedcoin.com";
 	var TOKEN = "";
+	var zws_id = "X1-ZWz18acpdyyrd7_8jmj2";
 
 	if(localfirstname === null)
 		localfirstname = "";
@@ -526,7 +532,9 @@ $(document).ready(function() {
 		.done(function(res) {
 			//console.log(res);
 
-			if(res.message == "You have been successfully registered!") {
+			if(res.message == "This account already exists") {
+				alert("Oops! That account already exists");
+			} else if(res.message == "You have been successfully registered!") {
 				$.ajax({
 					url: DOMAIN+"/plugin/api/user/login",
 					type: "POST",
@@ -570,6 +578,8 @@ $(document).ready(function() {
 
 					window.location.reload();
 				});
+			} else {
+				alert("Oops, there was an internal error. Please contact support");
 			}
 		});
 	});
@@ -663,6 +673,7 @@ $(document).ready(function() {
 
 
 	var location = "~~not set~~";
+	var zpid = "";
 	var newlocation = "";
 	var address = "";
 	var address2 = "";
@@ -686,6 +697,26 @@ $(document).ready(function() {
 						"pointer-events" : "none"
 					});
 
+					let _zpid = location.split("_zpid")[0].split("/");
+					zpid = _zpid[_zpid.length-1];
+
+					$.ajax({
+						url: "https://www.zillow.com/webservice/GetZestimate.htm?zws-id="+zws_id+"&zpid="+zpid,
+						type: "GET",
+						crossDomain: true,
+						contentType: "application/x-www-form-urlencoded",
+						dataType: "xml"
+					})
+					.done(function(xml) {
+						let _street = $(xml).find("street")[0].innerHTML;
+						let _city = $(xml).find("city")[0].innerHTML;
+						let _state = $(xml).find("state")[0].innerHTML;
+						let _zip = $(xml).find("zipcode")[0].innerHTML;
+						let _price = $(xml).find("amount")[0].innerHTML;
+						address = _street+", "+_city+", "+_state+" "+_zip;
+						address2 = address;
+					});
+
 					$.ajax({
 						url: location,
 						type: "GET",
@@ -693,8 +724,9 @@ $(document).ready(function() {
 					})
 					.done(function(res) {
 						let trimmed = $.trim(res);
-						address = trimmed.split("<title>")[1].split("</title>")[0];
+						/*address = trimmed.split("<title>")[1].split("</title>")[0];
 						address2 = address.split("|")[0];
+						console.log(address);*/
 
 						let propertyprice = trimmed.split('ds-value">')[1].split("<")[0];
 
@@ -780,6 +812,7 @@ $(document).ready(function() {
 	}
 
 	function calculate(value) {
+		value = value.replace(',', '');
 		let result = parseInt(value * 2 / 100);
 		return "$" + numberFormat(result);
 	}
@@ -850,6 +883,7 @@ $(document).ready(function() {
 
 		if(!txid) {
 			ajaxend();
+			alert("Something went wrong");
 			return false;
 		}
 
@@ -885,7 +919,7 @@ $(document).ready(function() {
 		.done(function(res) {
 			ajaxend();
 			var msg = $.trim(res);
-			//console.log(msg);
+			console.log(msg);
 
 			/*if(msg.message == "Success, TX created, emails sent, broker sms sent" || msg.message == "Success, TX created, emails sent, WARNING, SMS NOT SENT") {
 				$("#page2").css({
@@ -1006,7 +1040,7 @@ $(document).ready(function() {
 				value: '0x00',
 				data: txData,
 				chainId: '0x3C' /* GoChain */
-				/*chainId: '0x01'*/
+				/*chainId: '0x01' /* Ethereum */
 			};
 
 			// Sign
@@ -1017,7 +1051,6 @@ $(document).ready(function() {
 			//console.log("serialized: 0x"+serializedTx.toString('hex'));
 
 			// Execute
-			//var txhash = '0xe9afd7c3b3a39ba7776822f574f78852eae5b8510db01bafd95adcb0b09c69ec'; // TODO
 			var txhash = web3.eth.sendRawTransaction('0x' + serializedTx.toString('hex'));
 
 			return txhash;
@@ -1123,7 +1156,7 @@ $(document).ready(function() {
 		})
 		.done(function(res) {
 			var msg = $.trim(res);
-			//console.log(msg);
+			console.log(msg);
 		});
 	}
 
